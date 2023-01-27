@@ -1,7 +1,30 @@
 
 
 class Set{
-    
+
+
+
+}
+
+class MCQ_set extends Set{
+
+}
+
+class Coding_set extends Set{
+
+}
+
+class Practise_set extends Set{
+
+}
+
+class Learning_set extends Set{
+
+
+}
+
+class Assignment_set extends Set{
+
 }
 
 
@@ -9,13 +32,41 @@ class Set{
 
 class Topics{
 
-    sets_list=[];
+    sets_type={
+        mcq_set:[],
+        coding_set:[],
+        practise_set:[],
+        learning_set:[],
+        assignments_set:[],
+    };
     constructor(topicObject){
         this.topic_id=topicObject.topic_id;
         this.topic_name=topicObject.topic_name;
-        let sets_list_lenth=topicObject.sets_list.length;
-        for(let setId=0;setId<sets_list_lenth;setId++){
-
+        let sets_list_length=topicObject.sets_list.length;
+        for(let setId=0;setId<sets_list_length;setId++){
+            let new_set_type=topicObject.sets_list[setId].set_type;
+            let new_set;
+            let setObject=topicObject.sets_list[setId];
+            if(new_set_type==="mcq_set"){
+                new_set=new MCQ_set(setObject);
+                this.sets_type.mcq_set.push(new_set);
+            }
+            else if(new_set_type==="coding_set"){
+                new_set=new Coding_set(setObject);
+                this.sets_type.coding_set.push(new_set);
+            }
+            else if(new_set_type==="practise_set"){
+                new_set=new Practise_set(setObject);
+                this.sets_type.practise_set.push(new_set);
+            }
+            else if(new_set_type==="learning_set"){
+                new_set=new Learning_set(setObject);
+                this.sets_type.learning_set.push(new_set);
+            }
+            else{
+                new_set=new Assignment_set(setObject);
+                this.sets_type.assignments_set.push(new_set);
+            }
         }
     }
 
@@ -61,7 +112,31 @@ let trackObject={
                     topic_id:1,
                     topic_name:"classes",
                     sets_list:[
-
+                        {
+                            set_id:1,
+                            set_type:"mcq_set",
+                            set_name:"classes_MCQ",
+                        },
+                        {
+                            set_id:2,
+                            set_type:"coding_set",
+                            set_name:"classes_Coding",
+                        },
+                        {
+                            set_id:3,
+                            set_type:"practise_set",
+                            set_name:"classes_Practise",
+                        },
+                        {
+                            set_id:4,
+                            set_type:"learning_set",
+                            set_name:"classes_Learning",
+                        },
+                        {
+                            set_id:5,
+                            set_type:"assignments_set",
+                            set_name:"classes_assignments",
+                        },
                     ]
                 },
                 

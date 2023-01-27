@@ -64,7 +64,7 @@ class MCQ_set extends Set{
 
     }
     fetch_mcq_instructions(){
-
+        
     }
     fetch_question(){
 
@@ -119,7 +119,6 @@ class Learning_set extends Set{
     ask_the_doubt(){
 
     }
-
 }
 
 
@@ -186,9 +185,11 @@ class Tracks{
             let newCourse=new Courses(trackObject.courses_list[course_id]);
             this.courses_list.push(newCourse);
         }
+        //TODO: Try with map 
     }
 }
 
+//TODO: Update it to const, if it is not updated in the later stages of code
 let trackObject={
     track_id:1,
     track_name:"CCBP",

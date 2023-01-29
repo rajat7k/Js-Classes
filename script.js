@@ -3,120 +3,120 @@
 class Set{
 
     constructor(setObject){
-        this.set_id=setObject.set_id;
-        this.set_name=setObject.set_name;
-        this.set_type=setObject.set_type;
+        this.setId=setObject.setId;
+        this.setName=setObject.setName;
+        this.setType=setObject.setType;
     }
 
 }
 
 
 
-class Assignment_set extends Set{
+class AssignmentSet extends Set{
     constructor(setObject){
         super(setObject);
     }
-    show_questions_list(){
-        console.log(`Question list  of ${setObject.set_name}`)
+    showQuestionsList(){
+        console.log(`Question list  of ${setObject.setName}`)
     }
-    show_question_detail(){
-        console.log(`Question detail  of ${setObject.set_name}`)
+    showQuestionDetail(){
+        console.log(`Question detail  of ${setObject.setName}`)
     }
-    submit_code(){
-        console.log(`Submit Code of ${setObject.set_name}`)
+    submitCode(){
+        console.log(`Submit Code of ${setObject.setName}`)
     }
-    run_the_code(){
-        console.log(`Run Code of ${setObject.set_name}`)
+    runTheCode(){
+        console.log(`Run Code of ${setObject.setName}`)
     }
-    show_submission_list(){
-        console.log(`Show submission List of ${setObject.set_name}`)
+    showSubmissionList(){
+        console.log(`Show submission List of ${setObject.setName}`)
     }
-    show_the_hint_of_question(){
-        console.log(`Show Hint of ${setObject.set_name} Question`)
+    showTheHintOfQuestion(){
+        console.log(`Show Hint of ${setObject.setName} Question`)
     }
-    show_discussion_list(){
-        console.log(`Show Discussion List  of ${setObject.set_name}`)
+    showDiscussionList(){
+        console.log(`Show Discussion List  of ${setObject.setName}`)
     }
 }
 
-class Common_methods_of_Coding_Practise extends Assignment_set{
+class CodingPractiseParentClass extends AssignmentSet{
     constructor(setObject){
         super(setObject);
     }
-    show_solutoin(){
-        console.log(`Show solution  of ${setObject.set_name}`)
+    showSolutoin(){
+        console.log(`Show solution  of ${setObject.setName}`)
     }
-    reset_code(){
-        console.log(`Reset Code of ${setObject.set_name}`)
+    resetCode(){
+        console.log(`Reset Code of ${setObject.setName}`)
     }
-    save_code(){
-        console.log(`Save Code  of ${setObject.set_name}`)
+    saveCode(){
+        console.log(`Save Code  of ${setObject.setName}`)
     }
 }
 
 
-class MCQ_set extends Set{
+class McqSet extends Set{
 
     constructor(setObject){
         super(setObject);
-        this.instruction_url=setObject.instruction_url;
-        this.questions_url=setObject.questions_url;
+        this.instructionUrl=setObject.instructionUrl;
+        this.questionsUrl=setObject.questionsUrl;
 
     }
-    fetch_mcq_instructions(){
+    fetchMcqInstructions(){
         
     }
-    fetch_question(){
+    fetchQuestion(){
 
     }
-    submit_answer(){
+    submitAnswer(){
 
     }
-    skip_question(){
+    skipQuestion(){
 
     }
-    see_answer(){
+    seeAnswer(){
 
     }
 
 }
 
-class Coding_set extends Common_methods_of_Coding_Practise {
+class CodingSet extends CodingPractiseParentClass {
     constructor(setObject){
         super(setObject);
     }
    
 }
 
-class Practise_set extends Common_methods_of_Coding_Practise {
+class PractiseSet extends CodingPractiseParentClass {
     constructor(setObject){
         super(setObject);
     }
 
 }
 
-class Learning_set extends Set{
+class LearningSet extends Set{
 
     constructor(setObject){
         super(setObject);
     }
 
-    vedio_details(){
+    vedioDetails(){
 
     }
-    discusion_list(){
+    discusionList(){
 
     }
-    notes_list(){
+    notesList(){
 
     }
-    mark_as_completed(){
+    markAsCompleted(){
 
     }
-    submit_feedback(){
+    submitFeedback(){
 
     }
-    ask_the_doubt(){
+    askTheDoubt(){
 
     }
 }
@@ -127,34 +127,34 @@ class Learning_set extends Set{
 
 class Topics{
 
-    sets_list=[];
+    setsList=[];
     constructor(topicObject){
-        this.topic_id=topicObject.topic_id;
-        this.topic_name=topicObject.topic_name;
-        let sets_list_length=topicObject.sets_list.length;
-        for(let setId=0;setId<sets_list_length;setId++){
-            let new_set_type=topicObject.sets_list[setId].set_type;
+        this.topicId=topicObject.topicId;
+        this.topicName=topicObject.topicName;
+        const setsListLength=topicObject.setsList.length;
+        for(let setId=0;setId<setsListLength;setId++){
+            const new_setType=topicObject.setsList[setId].setType;
             let new_set;
-            let setObject=topicObject.sets_list[setId];
-            if(new_set_type==="mcq_set"){
-                new_set=new MCQ_set(setObject);
+            const setObject=topicObject.setsList[setId];
+            if(new_setType==="mcqSet"){
+                new_set=new McqSet(setObject);
             }
-            else if(new_set_type==="coding_set"){
-                new_set=new Coding_set(setObject);
+            else if(new_setType==="codingSet"){
+                new_set=new CodingSet(setObject);
             }
-            else if(new_set_type==="practise_set"){
-                new_set=new Practise_set(setObject);
+            else if(new_setType==="practiseSet"){
+                new_set=new PractiseSet(setObject);
            
             }
-            else if(new_set_type==="learning_set"){
-                new_set=new Learning_set(setObject);
+            else if(new_setType==="learningSet"){
+                new_set=new LearningSet(setObject);
                
             }
             else{
-                new_set=new Assignment_set(setObject);
+                new_set=new AssignmentSet(setObject);
               
             }
-            this.sets_list.push(new_set);
+            this.setsList.push(new_set);
         }
     }
 
@@ -162,83 +162,89 @@ class Topics{
 
 class Courses{
 
-    topics_list=[];
+    topicsList=[];
     constructor(courseObject){
-        this.course_id=courseObject.course_id;
-        this.course_name=courseObject.course_name;
-        let topics_list_length=courseObject.topics_list.length;
-        for(let topic_id=0;topic_id<topics_list_length;topic_id++){
-            let newTopic=new Topics(courseObject.topics_list[topic_id]);
-            this.topics_list.push(newTopic);
+        this.courseId=courseObject.courseId;
+        this.courseName=courseObject.courseName;
+        const topicsListLength=courseObject.topicsList.length;
+        for(let topicId=0;topicId<topicsListLength;topicId++){
+            const newTopic=new Topics(courseObject.topicsList[topicId]);
+            this.topicsList.push(newTopic);
         }
     }
 
 };
 
 class Tracks{
-    courses_list=[];
+    coursesList=[];
     constructor(trackObject){
-        this.track_id=trackObject.track_id;
-        this.track_name=trackObject.track_name;
-        let courses_list_length=trackObject.courses_list.length;
-        for(let course_id=0;course_id<courses_list_length;course_id++){
-            let newCourse=new Courses(trackObject.courses_list[course_id]);
-            this.courses_list.push(newCourse);
+        this.trackId=trackObject.trackId;
+        this.trackName=trackObject.trackName;
+
+        const coursesListLength=trackObject.coursesList.length;
+
+
+        for(let courseId=0;courseId<coursesListLength;courseId++){
+            const newCourse=new Courses(trackObject.coursesList[courseId]);
+            this.coursesList.push(newCourse);
         }
+
+        
+
         //TODO: Try with map 
     }
 }
 
 //TODO: Update it to const, if it is not updated in the later stages of code
-let trackObject={
-    track_id:1,
-    track_name:"CCBP",
-    courses_list:[
+const trackObject={
+    trackId:1,
+    trackName:"CCBP",
+    coursesList:[
         {
-            course_id:1,
-            course_name:"Javascript",
-            topics_list:[
+            courseId:1,
+            courseName:"Javascript",
+            topicsList:[
                 {
-                    topic_id:1,
-                    topic_name:"classes",
-                    sets_list:[
+                    topicId:1,
+                    topicName:"classes",
+                    setsList:[
                         {
-                            set_id:1,
-                            set_type:"mcq_set",
-                            set_name:"classes_MCQ",
-                            instruction_url:"xyz",
-                            questions_url:"xyz",
+                            setId:1,
+                            setType:"mcqSet",
+                            setName:"classes MCQ",
+                            instructionUrl:"xyz",
+                            questionsUrl:"xyz",
 
                         },
                         {
-                            set_id:2,
-                            set_type:"coding_set",
-                            set_name:"classes_Coding",
+                            setId:2,
+                            setType:"codingSet",
+                            setName:"classes Coding",
                         },
                         {
-                            set_id:3,
-                            set_type:"practise_set",
-                            set_name:"classes_Practise",
+                            setId:3,
+                            setType:"practiseSet",
+                            setName:"classes Practise",
                         },
                         {
-                            set_id:4,
-                            set_type:"learning_set",
-                            set_name:"classes_Learning",
+                            setId:4,
+                            setType:"learningSet",
+                            setName:"classes Learning",
                         },
                         {
-                            set_id:5,
-                            set_type:"assignments_set",
-                            set_name:"classes_assignments",
+                            setId:5,
+                            setType:"assignments_set",
+                            setName:"classes assignments",
                         },
                         {
-                            set_id:6,
-                            set_type:"learning_set",
-                            set_name:"classes_Learning",
+                            setId:6,
+                            setType:"learningSet",
+                            setName:"classes Learning",
                         },
                         {
-                            set_id:7,
-                            set_type:"assignments_set",
-                            set_name:"classes_assignments",
+                            setId:7,
+                            setType:"assignments_set",
+                            setName:"classes assignments",
                         },
                     ]
                 },
@@ -249,6 +255,6 @@ let trackObject={
     ]
 }
 
-let track1=new Tracks(trackObject);
+const track1=new Tracks(trackObject);
 
 console.log(track1);
